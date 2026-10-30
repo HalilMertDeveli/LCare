@@ -301,8 +301,7 @@
       "ChangeStatusRequest": {
         "required": [
           "status",
-          "version",
-          "note"
+          "version"
         ],
         "type": "object",
         "properties": {

@@ -1,0 +1,11 @@
+**/bin/
+**/obj/
+**/node_modules/
+**/.next/
+**/.dart_tool/
+**/build/
+**/*.log
+.git/
+apps/
+tests/
+docs/

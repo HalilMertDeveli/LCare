@@ -108,7 +108,7 @@ builder.Services.ConfigureHttpJsonOptions(o =>
     o.SerializerOptions.NumberHandling = JsonNumberHandling.Strict;
 });
 builder.Services.AddValidation();
-builder.Services.AddProblemDetails();
+builder.Services.AddProblemDetails(o => o.CustomizeProblemDetails = ProblemDetailsLocalization.Apply);
 builder.Services.AddExceptionHandler<ApiExceptionHandler>();
 builder.Services.AddHttpContextAccessor();
 builder.Services.AddOpenApi();

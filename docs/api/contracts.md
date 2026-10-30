@@ -25,7 +25,7 @@ Base URL (local): `http://localhost:5080` — Android emulator: `http://10.0.2.2
 | Client | Login | Session |
 |---|---|---|
 | Web (browser) | `POST /api/auth/login?useCookies=true` `{email,password}` → `200` empty body + `ledcare_session` HttpOnly cookie | Cookie (SameSite=Strict, 8h sliding). Calls go through the Next.js same-origin proxy. `POST /api/auth/logout` clears it. |
-| Mobile (Flutter) | `POST /api/auth/login` `{email,password}` → `200 AccessTokenResponse` | `Authorization: Bearer <accessToken>` (15 min). Refresh with `POST /api/auth/refresh {refreshToken}` (14 days, rotated on every refresh). Store tokens in secure storage only. |
+| Mobile (Flutter) | `POST /api/auth/login` `{email,password}` → `200 AccessTokenResponse` | `Authorization: Bearer <accessToken>` (15 min). Refresh with `POST /api/auth/refresh {refreshToken}` (14 days; each refresh returns a new pair, but earlier refresh tokens stay valid until expiry or `revoke-sessions` — see authentication.md). Store tokens in secure storage only. |
 
 `AccessTokenResponse`: `{ tokenType: "Bearer", accessToken, expiresIn (seconds), refreshToken }`.
 Refresh returns `401` when the refresh token is expired/revoked → client must sign in again.

@@ -2,4 +2,5 @@
   <Folder Name="/src/">
     <Project Path="src/LedCare.Api/LedCare.Api.csproj" />
   </Folder>
+  <Project Path="../../tests/backend/LedCare.Api.Tests/LedCare.Api.Tests.csproj" />
 </Solution>

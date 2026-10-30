@@ -12,13 +12,15 @@ using Microsoft.EntityFrameworkCore;
 namespace LedCare.Api.Modules.ServiceRequests;
 
 public sealed record CreateServiceRequestRequest(
-    [property: Required, StringLength(150, MinimumLength = 5)] string Title,
-    [property: Required, StringLength(4000, MinimumLength = 10)] string Description);
+    [property: Required(ErrorMessage = "Başlık zorunludur."),
+               StringLength(150, MinimumLength = 5, ErrorMessage = "Başlık 5 ile 150 karakter arasında olmalıdır.")] string Title,
+    [property: Required(ErrorMessage = "Açıklama zorunludur."),
+               StringLength(4000, MinimumLength = 10, ErrorMessage = "Açıklama 10 ile 4000 karakter arasında olmalıdır.")] string Description);
 
 public sealed record ChangeStatusRequest(
-    [property: Required] ServiceRequestStatus Status,
-    [property: Required] uint Version,
-    [property: StringLength(1000)] string? Note);
+    [property: Required(ErrorMessage = "Durum zorunludur.")] ServiceRequestStatus Status,
+    [property: Required(ErrorMessage = "Sürüm zorunludur.")] uint Version,
+    [property: StringLength(1000, ErrorMessage = "Not en fazla 1000 karakter olabilir.")] string? Note = null);
 
 public sealed record ServiceRequestSummaryDto(
     Guid Id,
