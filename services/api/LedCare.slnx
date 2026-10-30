@@ -1,0 +1,5 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/LedCare.Api/LedCare.Api.csproj" />
+  </Folder>
+</Solution>
